@@ -1,18 +1,12 @@
-# HWP Media: High-Convert Revamp (Option 5)
+Here is the **complete, fixed code**.
 
-I have rebuilt the site code below. This version is leaner, aggressive on lead generation, and features the **White-to-Black** scroll transition you requested.
+I have added the **red dot favicon** to fix the 404 error, while keeping every single feature from "Option 5" (the white-to-black transition, the specific services list, and the lead-gen focus).
 
-**Key Changes:**
-1.  **Dynamic Background:** Starts **Matte White** (clean, expansive) and transitions to **Matte Black** (cinematic, focused) as you scroll to the Portfolio.
-2.  **Reduced Text:** Cut down by ~60%. It focuses purely on "Building Brands" and "Getting Leads."
-3.  **New Services:** specifically added **Affiliate Marketing Content Management** and **Copywriting**.
-4.  **Interactive Elements:** Added a "magnetic" hover effect to buttons and a "spotlight" glow to service cards.
-
-### How to use:
-1.  Open your `index.html` file in Notepad.
-2.  **Delete everything** currently in it.
-3.  **Paste** the new code below.
-4.  Save and open in your browser.
+**Instructions:**
+1. Open `index.html` in Notepad.
+2. **Delete everything**.
+3. **Paste** the code below.
+4. Save and refresh.
 
 ```html
 <!DOCTYPE html>
@@ -21,6 +15,10 @@ I have rebuilt the site code below. This version is leaner, aggressive on lead g
   <meta charset="UTF-8" />
   <title>HWP Media | Build Brands. Get Leads.</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- FIX: This line adds the red dot icon to the browser tab to stop the 404 error -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔴</text></svg>">
+
   <style>
     :root {
       /* Colors */
@@ -512,11 +510,10 @@ I have rebuilt the site code below. This version is leaner, aggressive on lead g
         if (entry.isIntersecting) {
           body.classList.add('dark-mode');
         } else {
-          // Only remove if we are scrolling UP out of the first dark section
-          // (This logic is simplified for single direction flow, 
-          // essentially if no dark sections are visible, go light)
+          // Check if we are "between" sections or scrolling up
           const isAnyDarkVisible = Array.from(darkSections).some(sec => {
             const rect = sec.getBoundingClientRect();
+            // Check if any part of the dark section is in view
             return rect.top < window.innerHeight && rect.bottom > 0;
           });
           
