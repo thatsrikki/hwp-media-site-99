@@ -1,14 +1,3 @@
-Here is the **complete, fixed code**.
-
-I have added the **red dot favicon** to fix the 404 error, while keeping every single feature from "Option 5" (the white-to-black transition, the specific services list, and the lead-gen focus).
-
-**Instructions:**
-1. Open `index.html` in Notepad.
-2. **Delete everything**.
-3. **Paste** the code below.
-4. Save and refresh.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,7 +30,6 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
 
     body {
       font-family: var(--font-main);
-      /* Default background (will be overridden by JS) */
       background-color: var(--c-white);
       color: var(--c-black);
       transition: background-color 1.2s ease, color 0.8s ease;
@@ -83,7 +71,7 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
       display: flex;
       justify-content: space-between;
       align-items: center;
-      mix-blend-mode: difference; /* Ensures text is visible on white OR black */
+      mix-blend-mode: difference;
       color: #fff; 
     }
 
@@ -170,6 +158,7 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
     #about {
       padding: 4rem 0;
     }
+
     .section-label {
       font-size: 0.8rem;
       text-transform: uppercase;
@@ -179,12 +168,14 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
       display: block;
       font-weight: 700;
     }
+
     .big-text {
       font-size: clamp(1.8rem, 4vw, 3rem);
       line-height: 1.1;
       font-weight: 700;
       max-width: 900px;
     }
+
     .big-text span { color: var(--c-grey); }
 
     /* --- SERVICES SECTION (Transition trigger) --- */
@@ -194,13 +185,35 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 1.5rem;
-      margin-top: 3rem;
+      margin-top: 2rem;
+    }
+
+    .services-grid-top {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .services-grid-bottom {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 900px) {
+      .services-grid-top {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .services-grid-bottom {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .services-grid-top {
+        grid-template-columns: 1fr;
+      }
     }
 
     .service-card {
-      background: rgba(255,255,255,0.03); /* Subtle on dark, invisible on light */
+      background: rgba(255,255,255,0.03);
       border: 1px solid rgba(0,0,0,0.1);
       padding: 2rem;
       border-radius: 12px;
@@ -210,7 +223,6 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
       overflow: hidden;
     }
     
-    /* Dark mode override via body class */
     body.dark-mode .service-card {
       border-color: rgba(255,255,255,0.1);
       background: rgba(255,255,255,0.02);
@@ -261,7 +273,7 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
       border-radius: 4px;
       position: relative;
       overflow: hidden;
-      group: cursor-pointer;
+      cursor: pointer;
     }
 
     .work-img {
@@ -321,7 +333,7 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
       text-transform: uppercase;
       line-height: 1;
       margin-bottom: 2rem;
-      color: #fff; /* Always white as it's in dark zone */
+      color: #fff;
     }
 
     /* --- UTILITY CLASSES FOR JS --- */
@@ -400,35 +412,51 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
       <span class="section-label">What We Do</span>
       <h2 style="font-size: 2.5rem; text-transform: uppercase;">Full Stack Content</h2>
       
-      <div class="services-grid">
-        <!-- 1 -->
+      <!-- TOP ROW: 3 ITEMS -->
+      <div class="services-grid services-grid-top">
+        <!-- 1. PHOTOSHOOTS -->
         <div class="service-card">
           <div class="service-icon">●</div>
-          <div class="service-title">Photoshoots</div>
+          <div class="service-title">PHOTOSHOOTS</div>
           <div class="service-desc">
             High-contrast, matte-finish brand photography. Corporate headshots, product styling, and lifestyle imagery that feels expensive.
           </div>
         </div>
-        <!-- 2 -->
+        
+        <!-- 2. VIDEO SHOOTS -->
         <div class="service-card">
           <div class="service-icon">►</div>
-          <div class="service-title">Videoshoots</div>
+          <div class="service-title">VIDEO SHOOTS</div>
           <div class="service-desc">
             Cinematic 4K production. From 15-second social ads to mini-documentaries. We handle storyboarding, filming, and color grading.
           </div>
         </div>
-        <!-- 3 -->
+        
+        <!-- 3. SOCIAL MEDIA MANAGEMENT -->
         <div class="service-card">
-          <div class="service-icon">★</div>
-          <div class="service-title">Affiliate Management</div>
+          <div class="service-icon">📱</div>
+          <div class="service-title">SOCIAL MEDIA MANAGEMENT</div>
           <div class="service-desc">
-            We don't just make content; we monetize it. Strategic asset creation for affiliate campaigns that drive actual click-throughs.
+            Full content pipeline. Scheduling, captioning, and performance optimization across Instagram, TikTok, and YouTube.
           </div>
         </div>
-        <!-- 4 -->
+      </div>
+
+      <!-- BOTTOM ROW: 2 ITEMS -->
+      <div class="services-grid services-grid-bottom">
+        <!-- 4. AFFILIATE/UGC MANAGEMENT -->
+        <div class="service-card">
+          <div class="service-icon">★</div>
+          <div class="service-title">AFFILIATE/UGC MANAGEMENT</div>
+          <div class="service-desc">
+            We don't just make content; we monetize it. Strategic asset creation for affiliate campaigns that drive actual click-throughs and revenue.
+          </div>
+        </div>
+        
+        <!-- 5. COPYWRITING -->
         <div class="service-card">
           <div class="service-icon">✎</div>
-          <div class="service-title">Copywriting</div>
+          <div class="service-title">COPYWRITING</div>
           <div class="service-desc">
             Scripts that sound human. Captions that convert. We write the words that make your visuals sell.
           </div>
@@ -438,7 +466,6 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
   </section>
 
   <!-- SECTION 4: PORTFOLIO (BLACK) -->
-  <!-- The JS will detect this section and flip the site to Dark Mode -->
   <section id="portfolio" data-theme="dark">
     <div class="container">
       <div class="portfolio-header">
@@ -448,7 +475,6 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
 
       <div class="work-grid">
         <div class="work-item">
-          <!-- Placeholder image color block -->
           <div class="work-img" style="background: #222;"></div> 
           <div class="work-overlay">
             <div class="work-cat">Video Production</div>
@@ -502,7 +528,7 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
     
     const observerOptions = {
       root: null,
-      threshold: 0.2, // Trigger when 20% of the dark section is visible
+      threshold: 0.2,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -510,10 +536,8 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
         if (entry.isIntersecting) {
           body.classList.add('dark-mode');
         } else {
-          // Check if we are "between" sections or scrolling up
           const isAnyDarkVisible = Array.from(darkSections).some(sec => {
             const rect = sec.getBoundingClientRect();
-            // Check if any part of the dark section is in view
             return rect.top < window.innerHeight && rect.bottom > 0;
           });
           
@@ -543,4 +567,3 @@ I have added the **red dot favicon** to fix the 404 error, while keeping every s
 
 </body>
 </html>
-```
